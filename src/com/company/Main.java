@@ -39,9 +39,7 @@ public class Main {
                 }
 
                 try {
-                    System.out.println("rodando script");
                     runScript();
-                    System.out.println("rodou script");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
