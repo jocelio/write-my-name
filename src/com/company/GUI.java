@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static java.awt.Color.GRAY;
 import static java.lang.Integer.parseInt;
@@ -15,7 +16,7 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class GUI {
 
-    public GUI(String datesFile) {
+    public GUI(final String datesFile, final Optional<ArrayList<LocalDate>> initialDates) {
         JFrame f = new JFrame();
 
         final var GREEN = new Color(0x216E39);
@@ -28,7 +29,7 @@ public class GUI {
             int yPosition = 18 * (i <= 7? i: (i - (7 * ((i - 1) / 7))));
             final var date = i;
             JButton b = new JButton("") {{
-
+//                if( initialDates.stream().anyMatch(d -> d.isEqual(firstDay.plusDays(i-1))) )
                 setBackground(GRAY);
                 setOpaque(true);
                 setBorderPainted(false);
@@ -37,8 +38,8 @@ public class GUI {
                     public void actionPerformed(ActionEvent e) {
                         JButton button = (JButton) e.getSource();
                         setBackground(getBackground() == GRAY? GREEN: GRAY);
-                        var daisFromBeginning= parseInt(button.getActionCommand());
-                        var date = firstDay.plusDays(daisFromBeginning-1);
+
+                        var date = LocalDate.parse(button.getActionCommand());
 
                         if(dates.stream().filter(d -> d.isEqual(date)).findAny().isEmpty()){
                             dates.add(date);
@@ -49,7 +50,7 @@ public class GUI {
                     }
                 });
             }};
-            b.setActionCommand(valueOf(i));
+            b.setActionCommand(firstDay.plusDays(i-1).toString());
             b.setToolTipText(i + " - " + firstDay.plusDays(i-1));
             b.setBounds(j,yPosition,13, 13 );
 
