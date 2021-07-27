@@ -31,7 +31,7 @@ public class Main {
                 if(commitsList.isPresent()){
                     var localDates = commitsList.get();
                     localDates.add(today);
-                    serialize(today, System.getProperty("user.dir")+"/commit_lists");
+                    serialize(localDates, System.getProperty("user.dir")+"/commit_lists");
                 }else {
                     var list = new ArrayList<LocalDate>();
                     list.add(today);
