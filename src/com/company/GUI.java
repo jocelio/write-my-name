@@ -23,7 +23,7 @@ public class GUI {
         var daysToBeginOfWeek = now().getDayOfWeek().getValue();
         var firstDay = now().minusDays(daysToBeginOfWeek);
         var lastDay = now().plusYears(1);
-        var dates = new ArrayList<LocalDate>();
+        var dates = new ArrayList<>(initialDates.get());
         for (int i = 1, j = 10; (i-1) <= DAYS.between(firstDay, lastDay); i++){
 
             int yPosition = 18 * (i <= 7? i: (i - (7 * ((i - 1) / 7))));
