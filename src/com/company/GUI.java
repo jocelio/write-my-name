@@ -29,7 +29,6 @@ public class GUI {
             int yPosition = 18 * (i <= 7? i: (i - (7 * ((i - 1) / 7))));
             final var date = i;
             JButton b = new JButton("") {{
-//                if( initialDates.stream().anyMatch(d -> d.isEqual(firstDay.plusDays(i-1))) )
                 setBackground(GRAY);
                 setOpaque(true);
                 setBorderPainted(false);
@@ -50,7 +49,14 @@ public class GUI {
                     }
                 });
             }};
-            b.setActionCommand(firstDay.plusDays(i-1).toString());
+
+            var buttonDate = firstDay.plusDays(i-1);
+
+            if(initialDates.isPresent() && initialDates.get().stream().anyMatch(d -> d.isEqual(buttonDate)) ){
+                b.setBackground(GREEN);
+            }
+
+            b.setActionCommand(buttonDate.toString());
             b.setToolTipText(i + " - " + firstDay.plusDays(i-1));
             b.setBounds(j,yPosition,13, 13 );
 
