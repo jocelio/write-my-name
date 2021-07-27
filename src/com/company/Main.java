@@ -44,11 +44,10 @@ public class Main {
                     e.printStackTrace();
                 }
             }
-
+            System.exit(0);
+        }else {
+            new GUI(datesFile, dates);
         }
-
-        new GUI(datesFile, dates);
-
     }
 
     public static void runScript() throws IOException, InterruptedException {
