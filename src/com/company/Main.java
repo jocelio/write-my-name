@@ -47,9 +47,9 @@ public class Main {
                 }
             }
 
-        }
+        }else {
             new GUI(datesFile);
-        
+        }
     }
 
     public static void runScript() throws IOException, InterruptedException {
