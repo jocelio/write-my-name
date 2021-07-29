@@ -26,7 +26,7 @@ public class Main {
             var today = now();
             // if today is commit day
             if(dates.get().stream().anyMatch(d -> d.isEqual(today))){
-                System.out.println("fazendo a magica");
+                System.out.println("Doing the magic");
                 //modify the commits_list with todays date
                 if(commitsList.isPresent()){
                     var localDates = commitsList.get();
