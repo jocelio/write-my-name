@@ -22,8 +22,8 @@ public class Main {
 
         if(dates.isPresent()){
             System.out.println(dates.get());
-
             var today = now();
+
             // if today is commit day
             if(dates.get().stream().anyMatch(d -> d.isEqual(today))){
                 System.out.println("Doing the magic");
